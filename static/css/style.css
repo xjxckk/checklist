@@ -1,0 +1,208 @@
+html,
+body {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    width: 100%;
+    display: table;
+    background-color: #333;
+    text-decoration: none;
+    color: white;
+    font-family: "Segoe UI";
+    /* font-size: 16px; */
+}
+
+.hidden {display: none}
+
+.bold {font-weight: bold;}
+
+a {
+    text-decoration: none;
+    color: white;
+}
+
+/* Form */
+
+form {
+    height: 100%;
+    box-sizing: border-box;
+    display: block;
+    flex-flow: row wrap;
+    margin: 0 auto 6px;
+    padding: 20px;
+    }
+
+#Note {
+    margin-top: 5px;
+}
+
+textarea {
+    font-size: 16px;
+    font-family: "Segoe UI";
+    border: none;
+    padding: 3px 0 3px 8px;
+    color: white;
+    background: none;
+    width: 87%;
+    resize: none;
+}
+
+textarea:focus {outline: none}
+
+#floor {position: relative}
+
+.fa {
+    display:inline-block;
+    font:normal normal normal 14px/1 FontAwesome;
+    font-size:inherit;
+    text-rendering:auto;
+    -webkit-font-smoothing:antialiased;
+    -moz-osx-font-smoothing:grayscale
+}
+
+.fa-plus {
+    color: #333 !important;
+    display: block !important;
+    line-height: 60px !important;
+    font-size: 24px !important;
+    cursor: pointer;
+    background-color: white;
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    text-align: center;
+    position: fixed;
+    right: 20px;
+    bottom: 20px;
+}
+
+.Title {
+    font-size: 20px
+}
+
+.Add {
+    float: right;
+    cursor: pointer;
+    margin-top: 5px;
+}
+
+/* Checkbox */
+.container {
+    height: 16px;
+    width: 16px;
+    display: inline-block;
+    vertical-align: top;
+    margin-top: 2px;
+    padding: 5px 0;
+}
+
+input[type="checkbox"] {
+    display: none;
+}
+
+/* Create a custom checkbox */
+.checkmark {
+    cursor: pointer;
+    border: 2px solid white;
+    border-radius: 2px;
+    display: inline-block;
+    height: 12px;
+    width: 12px;
+}
+  
+/* On mouse-over, add a grey background color */
+/* .checkmark:hover {
+    border: 1px solid grey;
+} */
+  
+/* When the checkbox is checked, add a background */
+input[type="checkbox"]:checked + .container > .checkmark {
+    background-color: white;
+}
+  
+/* Create the checkmark/indicator (hidden when not checked) */
+.checkmark:after {
+    content: "";
+    position: relative;
+    display: none;
+}
+  
+/* Show the checkmark when checked */
+input:checked + .container > .checkmark:after {
+    display: block;
+}
+  
+/* Style the checkmark/indicator */
+.container .checkmark:after {
+    left: 3px;
+    bottom: 1px;
+    width: 3px;
+    height: 10px;
+    border: solid #333;
+    border-width: 0 3px 3px 0;
+    transform: rotate(45deg);
+}
+
+/* Strikethrough the content text when checkbox is checked */
+input:checked + .container + .content {
+    text-decoration: line-through;
+}
+
+.remove {
+    margin-left: 1px;
+    cursor: pointer;
+    display: none !important;
+    position: absolute;
+    padding: 5px 0;
+}
+
+input:checked + .container + .content + .remove {
+    display: inline-block !important;
+}
+
+/* Animations */
+
+@keyframes fadeIn {
+    0% {
+        opacity: 0;
+        transform: translate3d(0, -100%, 0)
+        }
+    to {
+        opacity: 0.5;
+        transform: translateZ(0)
+        }
+    }
+
+@keyframes fadeInDown {
+    0% {
+        opacity: 0;
+        -webkit-transform: translate3d(0, -100%, 0);
+        transform: translate3d(0, -100%, 0)
+        }
+    to {
+        opacity: 1;
+        -webkit-transform: translateZ(0);
+        transform: translateZ(0)
+        }
+    }
+
+@keyframes fadeOutDown {
+    0% {
+        opacity: 1;
+        transform: translate3d(0, 0)
+        }
+    to {
+        opacity: 0;
+        transform: translateZ(0, 100%, 0)
+        }
+    }
+
+.fadeInDown {
+    animation-name: fadeInDown;
+    animation-duration: 1s
+    }
+
+.fadeOutDown {
+    animation-name: fadeOutDown;
+    animation-duration: 1s
+    }

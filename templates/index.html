@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+
+<html>
+	<head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=0"/>
+		<title>Startpage</title>
+		<link rel="icon" type="image/png" href="{{ url_for('static',filename='images/favicon.png') }}">
+		<link rel="stylesheet" href="{{ url_for('static',filename='css/style.css') }}">
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+		<style>
+			body {
+				/* background-image: url("{{ url_for('static',filename='images/bg.jpg') }}"); */
+				display: table-cell;
+				/* vertical-align: middle */
+			}
+		</style>
+	</head>
+	<body>
+        <form class="block" action="" method="POST" enctype="multipart/form-data">
+            <a href="/" class="Title">To do:</a>
+            <div id="Note">
+                {%for item in checklist%}
+                    <div id="{{item}}">
+                        <input type="checkbox" id="{{item}}_checkbox">
+                        <label for="{{item}}_checkbox" class="container">
+                            <span class="checkmark"></span>
+                        </label>
+                        <textarea class="content" name="{{item}}" rows="1">{{checklist[item]}}</textarea>
+                        <i class="remove fa fa-times" onclick="remove('{{item}}')"></i>
+                    </div>
+                {%endfor%}
+            </div>
+            <div id="floor">
+                <i class="fa fa-plus" onclick="add()"></i>
+            </div>
+        </form>
+
+		<script src="{{ url_for('static',filename='js/checklist.js') }}"></script>
+	</body>
+</html>
