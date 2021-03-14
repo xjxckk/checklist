@@ -9,7 +9,8 @@ app = Flask(__name__)
 @app.route("/", methods=["POST", "GET"])
 def home():
     if request.method == "POST":
-        for item in request.form.items():
+        print(checklist)
+        for item in request.form.items(): # item in items() is a tuple with the name (id) at 0 and content of the item at 1
             if item[1] == "":
                 try:
                     del checklist[item[0]]
@@ -17,6 +18,8 @@ def home():
                     pass
             else:
                 checklist[item[0]] = item[1]
+        print()
+        print(checklist)
         with open("static/checklist.json", "w") as f:
             json.dump(checklist, f, indent=4)
     return render_template("index.html", checklist=checklist)

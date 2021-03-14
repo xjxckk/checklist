@@ -1,13 +1,3 @@
-function onInput() {
-	this.style.height = "0"
-	this.style.height = this.scrollHeight - "5" + "px"
-	
-	formData = new FormData(form)
-
-	xhr.open("POST", "")
-	xhr.send(formData)
-}
-
 var xhr = new XMLHttpRequest()
 
 var form = document.querySelector("form")
@@ -17,6 +7,19 @@ for (let i = 0; i < textarea.length; i++) {
 	textarea[i].style.height = "0"
 	textarea[i].style.height = textarea[i].scrollHeight - "5" + "px"
 	textarea[i].addEventListener('input', onInput)
+	}
+
+function submit() {
+	formData = new FormData(form)
+
+	xhr.open("POST", "")
+	xhr.send(formData)
+	}
+
+function onInput() {
+	this.style.height = "0"
+	this.style.height = this.scrollHeight - "5" + "px"
+	submit()
 	}
 
 function add() {
@@ -36,6 +39,7 @@ function add() {
 	document.getElementById("Note").appendChild(container)
 	var current = document.querySelector(`textarea[name="${id}"]`)
 	current.addEventListener('input', onInput)
+	submit()
 	}
   
 function remove(id) {
@@ -43,5 +47,6 @@ function remove(id) {
 	setTimeout(function(){
 		document.getElementById(id).className = "hidden"
 		document.querySelector(`textarea[name="${id}"]`).value = ""
-	}, 1000);
+		submit()
+		}, 1000)
 	}
